@@ -2,10 +2,12 @@ sudo: true
 os: trusty
 cache: false
 env:
-- URL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+  matrix:
+  - URL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+  global:
+    secure: BiAyRX3OJtw7NOpRpNFsIBD70xpShIgF7j7hP6ziJ7Jy7Ttk3PE0fsRVhz/78N07m1qkmiC9S1XpIHgf7G1aysgQyQ2giXT/kp+sHHRKFDivHf2Z+1LXONf5mJnylhk0VPQkxyTtrrBqZF05sQfOYBdjTdS9gPmiDi++bizPjcaw9/F08uXWfQA2SF7uD2yMwCCdm+f77Vfis5pl+Lvz05gOEDZV1SPo+IlOefQ4MlT0c2d5CNwGQG9M9kKzC/4QihqafhEGJJcRnFqmufLa2f5i0Xr74nTGhPgb/AC6Nh7nKcwq7F5jWEh0dunLUinuaiOD+f//1Gddo9E+YkipiK6VtSDlIeVEwxnypnwMpv+F0K3N6mhpsoUpekwmoldTn7urbsITn9tiGRMs5/EbDM1fV0X+DnhQUNekX7JDVJk06uqJjvTnSX1jOeib9WvwXe+VKbfwnmgOa4DD4b8U30QWpsfj1ePzMZfDpiz8QO7dzUYYEks8Vv6jkjBrJsAilIz0N0Ik90Km7qM8sM+/bGXdT8nKBdxA+4jBo9NaQD0rh2TlaqiRiwaUdK2J4FCLwiKI1wLZTySMGy9DYL65N9rLHIT65Mdv/GVYz4uJDDaJSPRWN13znGLOXorvI63lt+ri1ZzW6x1vkqaCCQFlm5ioSKig0fHGH+K2/ISSuiQ=
 before_install:
-- openssl aes-256-cbc -K $encrypted_b33d8419eb68_key -iv $encrypted_b33d8419eb68_iv
-  -in assets/server.key.enc -out assets/server.key -d
+ - openssl aes-256-cbc -k "$password" -in super_secret.txt.enc -out super_secret.txt -d
 - export SFDX_AUTOUPDATE_DISABLE=false
 - export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 - export SFDX_DOMAIN_RETRY=300
